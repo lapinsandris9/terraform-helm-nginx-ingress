@@ -13,6 +13,6 @@ resource "helm_release" "nginx-ingress" {
   recreate_pods = true
   namespace     = kubernetes_namespace.ingress-nginx.metadata.0.name
   values = [
-    file("values/nginx-ingress.yaml")
+    file("${${path.module}}/values/nginx-ingress.yaml")
   ]
 }
