@@ -1,6 +1,10 @@
 resource "kubernetes_namespace" "ingress-nginx" {
   metadata {
     name = var.nginx_ingress_namespace
+    labels = {
+      "name" = var.nginx_ingress_namespace
+      "app.kubernetes.io/managed-by" = "terraform"
+    }
   }
 }
 resource "helm_release" "nginx-ingress" {
