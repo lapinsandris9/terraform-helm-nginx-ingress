@@ -7,7 +7,7 @@ controller:
         release: "kube-prometheus-stack"
   autoscaling:
     enabled: "true"
-  replicaCount: 2
+  replicaCount: 1
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux
