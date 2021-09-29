@@ -1,6 +1,6 @@
 controller:
   autoscaling:
-    enabled: false
+    enabled: "true"
   replicaCount: 2
   enableCustomResources: "false"
   nodeSelector:
