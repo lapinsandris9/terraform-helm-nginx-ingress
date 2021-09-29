@@ -1,4 +1,10 @@
 controller:
+  metrics:
+    enabled: "true"
+    serviceMonitor:
+      enabled: "true"
+      additionalLabels:
+        release: "kube-prometheus-stack"
   autoscaling:
     enabled: "true"
   replicaCount: 2
@@ -10,12 +16,6 @@ controller:
     enable: "false"
   stats:
     enabled: "true"
-  metrics:
-    enabled: "true"
-    serviceMonitor:
-      enabled: "true"
-      additionalLabels:
-        release: "kube-prometheus-stack"
   service:
     enableHttp: "false"
     externalTrafficPolicy: "Local"
