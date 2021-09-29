@@ -3,7 +3,7 @@ controller:
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux
-    cloud.google.com/gke-preemptible: false
+    cloud.google.com/gke-preemptible: "false"
   appprotect:
     enable: "false"
   stats:
