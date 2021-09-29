@@ -1,11 +1,19 @@
 controller:
+
   enableCustomResources: "false"
+  nodeSelector:
+    kubernetes.io/os: linux
+    cloud.google.com/gke-preemptible: false
   appprotect:
     enable: "false"
   stats:
     enabled: "true"
   metrics:
     enabled: "true"
+    serviceMonitor:
+      enabled: "true"
+      additionalLabels:
+        release: "kube-prometheus-stack"
   service:
     enableHttp: "false"
     externalTrafficPolicy: "Local"

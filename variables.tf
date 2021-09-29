@@ -2,13 +2,12 @@
 variable "helm_repos" {
   type    = map(string)
   default = {
-    nginx-ingress = "https://helm.nginx.com/stable"
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
   }
 }
 
 variable "nginx_ingress_chart_version" {
-  default = "3.21.0"
+  default = "4.0.3"
 }
 
 variable "nginx_ingress_namespace" {
