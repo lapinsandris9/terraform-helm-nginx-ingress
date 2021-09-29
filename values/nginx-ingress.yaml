@@ -1,5 +1,7 @@
 controller:
-
+  autoscaling:
+    enabled: false
+  replicaCount: 2
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux
