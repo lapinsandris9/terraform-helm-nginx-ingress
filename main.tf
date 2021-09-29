@@ -17,6 +17,15 @@ resource "helm_release" "nginx-ingress" {
   recreate_pods = true
   namespace     = kubernetes_namespace.ingress-nginx.metadata.0.name
   values = [
-    file("${path.module}/values/nginx-ingress.yaml")
+    data.template_file.values.rendered
   ]
+}
+
+
+data "template_file" "values" {
+  template = file("${path.module}/values/nginx-ingress.yaml.tpl")
+  vars = {
+    nginx_ingess_hpa_enabled      = var.nginx_ingess_hpa_enabled
+    nginx_ingess_replica_count    = var.nginx_ingess_replica_count
+  }
 }

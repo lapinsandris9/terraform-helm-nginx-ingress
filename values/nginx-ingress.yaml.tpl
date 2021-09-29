@@ -6,8 +6,8 @@ controller:
       additionalLabels:
         release: "kube-prometheus-stack"
   autoscaling:
-    enabled: "true"
-  replicaCount: 1
+    enabled: "${nginx_ingess_hpa_enabled}"
+  replicaCount: ${nginx_ingess_replica_count}
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux

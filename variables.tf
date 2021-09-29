@@ -17,3 +17,11 @@ variable "nginx_ingress_namespace" {
 variable "nginx_ingress_helm_release_name" {
   default = "nginx-ingress"
 }
+
+variable "nginx_ingess_hpa_enabled" {
+  default = false
+}
+
+variable "nginx_ingess_replica_count" {
+  default = 2
+}
