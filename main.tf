@@ -27,5 +27,6 @@ data "template_file" "values" {
   vars = {
     nginx_ingess_hpa_enabled      = var.nginx_ingess_hpa_enabled
     nginx_ingess_replica_count    = var.nginx_ingess_replica_count
+    nginx_ingess_deploy_on_preemptible = var.nginx_ingess_deploy_on_preemptible
   }
 }
