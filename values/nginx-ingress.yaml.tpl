@@ -11,7 +11,7 @@ controller:
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux
-    cloud.google.com/gke-preemptible: "false"
+    cloud.google.com/gke-preemptible: "${nginx_ingess_deploy_on_preemptible}"
   appprotect:
     enable: "false"
   stats:

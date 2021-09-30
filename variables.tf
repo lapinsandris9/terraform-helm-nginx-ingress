@@ -25,3 +25,7 @@ variable "nginx_ingess_hpa_enabled" {
 variable "nginx_ingess_replica_count" {
   default = 2
 }
+
+variable "nginx_ingess_deploy_on_preemptible" {
+  default = false
+}
