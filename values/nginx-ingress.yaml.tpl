@@ -1,12 +1,14 @@
 controller:
   metrics:
-    enabled: "true"
+    enabled: ${nginx_ingess_allow_prometheus}
     serviceMonitor:
-      enabled: "true"
+      enabled: ${nginx_ingess_allow_prometheus}
       additionalLabels:
         release: "kube-prometheus-stack"
   autoscaling:
     enabled: "${nginx_ingess_hpa_enabled}"
+    minReplicas: 1
+    maxReplicas: ${nginx_ingess_replica_count}
   replicaCount: ${nginx_ingess_replica_count}
   enableCustomResources: "false"
   nodeSelector:
