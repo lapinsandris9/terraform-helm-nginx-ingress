@@ -15,7 +15,7 @@ variable "nginx_ingress_helm_release_name" {
 }
 
 variable "nginx_ingress_chart_version" {
-  default = "4.0.3"
+  default = "4.6.1"
 }
 
 variable "nginx_ingess_replica_count" {
