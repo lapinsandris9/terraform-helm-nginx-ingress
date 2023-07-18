@@ -1,6 +1,6 @@
 
 variable "helm_repos" {
-  type    = map(string)
+  type = map(string)
   default = {
     ingress-nginx = "https://kubernetes.github.io/ingress-nginx"
   }
@@ -26,13 +26,14 @@ variable "nginx_ingress_replica_count" {
 }
 
 variable "nginx_ingress_hpa_enabled" {
-  default = true
-  b
+  default     = true
+  type        = bool
+  description = "enable hpa autoscaller"
 }
 
 variable "nginx_ingress_deploy_on_preemptible" {
-  default = false
-  type = bool
+  default     = false
+  type        = bool
   description = "Allow nginx-ingress deployed on GKE preemtible nodes"
 }
 
@@ -41,18 +42,18 @@ variable "nginx_ingress_allow_prometheus" {
 }
 
 variable "helm_nginx_force_update" {
-  default = false
-  type = bool
+  default     = false
+  type        = bool
   description = "helm chart deploy with force option"
 }
 
 variable "nginx_ingress_namespace_external" {
-  default = null
+  default     = null
   description = "nginx ingress namespace externaly supplied"
-  type = string
+  type        = string
 }
 
 variable "nginx_ingress_deploy_internal_loadbalancer" {
-  default = false
+  default     = false
   description = "Deploy nginx_ingress internal for GCP, instead of public, if 'true', no public lbl will be deployed"
 }

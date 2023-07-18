@@ -3,7 +3,7 @@ resource "kubernetes_namespace" "ingress-nginx" {
   metadata {
     name = var.nginx_ingress_namespace
     labels = {
-      "name" = var.nginx_ingress_namespace
+      "name"                         = var.nginx_ingress_namespace
       "app.kubernetes.io/managed-by" = "terraform"
     }
   }
@@ -20,7 +20,7 @@ resource "helm_release" "nginx-ingress" {
   recreate_pods = true
   namespace     = local.nginx_ingress_namespace
   values = [
-    templatefile("${path.module}/values/nginx-ingress.yaml.tpl",
+    templatefile("${path.module}/values/nginx_ingress.yaml.tpl",
       {
         nginx_ingress_hpa_enabled           = var.nginx_ingress_hpa_enabled
         nginx_ingress_replica_count         = var.nginx_ingress_replica_count
@@ -32,7 +32,7 @@ resource "helm_release" "nginx-ingress" {
 }
 
 resource "helm_release" "nginx-ingress-internal" {
-  count = var.nginx_ingress_deploy_internal_loadbalancer ? 1 : 0
+  count         = var.nginx_ingress_deploy_internal_loadbalancer ? 1 : 0
   name          = "${var.nginx_ingress_helm_release_name}-internal"
   repository    = var.helm_repos.ingress-nginx
   chart         = "ingress-nginx"
@@ -42,7 +42,7 @@ resource "helm_release" "nginx-ingress-internal" {
   recreate_pods = true
   namespace     = local.nginx_ingress_namespace
   values = [
-    templatefile("${path.module}/values/nginx-ingress.yaml.tpl",
+    templatefile("${path.module}/values/nginx_ingress.yaml.tpl",
       {
         nginx_ingress_hpa_enabled           = var.nginx_ingress_hpa_enabled
         nginx_ingress_replica_count         = var.nginx_ingress_replica_count
