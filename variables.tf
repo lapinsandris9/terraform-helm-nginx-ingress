@@ -57,3 +57,13 @@ variable "nginx_ingress_deploy_internal_loadbalancer" {
   default     = false
   description = "Deploy nginx_ingress internal for GCP, instead of public, if 'true', no public lbl will be deployed"
 }
+
+variable "nginx_ingress_class_name" {
+  default = "nginx"
+  type    = string
+}
+
+variable "nginx_ingress_internal_class_name" {
+  default = "nginx-internal"
+  type    = string
+}

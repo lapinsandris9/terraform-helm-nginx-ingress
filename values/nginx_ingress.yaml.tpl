@@ -1,10 +1,6 @@
 ---
 controller:
-  service:
-    internal:
-      enabled: ${nginx_ingress_deploy_internal_loadbalancer}
-      annotations:
-        networking.gke.io/load-balancer-type: "Internal"
+  ingressClass: ${nginx_ingress_class_name}
   metrics:
     enabled: ${nginx_ingress_allow_prometheus}
     serviceMonitor:
