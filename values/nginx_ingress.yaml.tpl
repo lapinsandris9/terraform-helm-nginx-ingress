@@ -1,19 +1,20 @@
+---
 controller:
   metrics:
-    enabled: ${nginx_ingess_allow_prometheus}
+    enabled: ${nginx_ingress_allow_prometheus}
     serviceMonitor:
-      enabled: ${nginx_ingess_allow_prometheus}
+      enabled: ${nginx_ingress_allow_prometheus}
       additionalLabels:
         release: "kube-prometheus-stack"
   autoscaling:
-    enabled: "${nginx_ingess_hpa_enabled}"
+    enabled: "${nginx_ingress_hpa_enabled}"
     minReplicas: 1
-    maxReplicas: ${nginx_ingess_replica_count}
-  replicaCount: ${nginx_ingess_replica_count}
+    maxReplicas: ${nginx_ingress_replica_count}
+  replicaCount: ${nginx_ingress_replica_count}
   enableCustomResources: "false"
   nodeSelector:
     kubernetes.io/os: linux
-    cloud.google.com/gke-preemptible: "${nginx_ingess_deploy_on_preemptible}"
+    cloud.google.com/gke-preemptible: "${nginx_ingress_deploy_on_preemptible}"
   appprotect:
     enable: "false"
   stats:
