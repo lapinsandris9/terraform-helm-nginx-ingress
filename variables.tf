@@ -62,3 +62,8 @@ variable "nginx_ingress_class_name" {
   default = null
   type    = string
 }
+
+variable "gcp_internal_subnet_name" {
+  default     = null
+  description = "vpc subnet name if nginx_ingress_lbl_internal_enabled='true'"
+}
