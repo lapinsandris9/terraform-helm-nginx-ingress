@@ -7,6 +7,8 @@ controller:
     default: false
     controllerValue: "k8s.io/ingress-nginx"
   service:
+    enableHttp: "false"
+    externalTrafficPolicy: "Local"
     external:
       enabled:  ${nginx_ingress_lbl_external_enabled}
     internal:
@@ -35,10 +37,6 @@ controller:
     enable: "false"
   stats:
     enabled: "true"
-  service:
-    enableHttp: "false"
-    externalTrafficPolicy: "Local"
-    annotations:
   config:
     enable-vts-status: "false"
     use-forwarded-headers: "true"
