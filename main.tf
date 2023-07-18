@@ -1,5 +1,5 @@
 resource "kubernetes_namespace" "ingress-nginx" {
-  count = var.nginx_ingress_namespace_external != "" ? 1 : 0
+  count = var.nginx_ingress_namespace_external != "" ? 0 : 1
   metadata {
     name = var.nginx_ingress_namespace
     labels = {
