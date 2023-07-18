@@ -14,9 +14,7 @@ controller:
     internal:
       enabled: ${nginx_ingress_lbl_internal_enabled}
       annotations:
-        cloud.google.com/load-balancer-type: "Internal"
         networking.gke.io/load-balancer-type: "Internal"
-        networking.gke.io/internal-load-balancer-subnet: "${gcp_internal_subnet_name}"
         networking.gke.io/internal-load-balancer-allow-global-access: "true"
   metrics:
     enabled: ${nginx_ingress_allow_prometheus}
