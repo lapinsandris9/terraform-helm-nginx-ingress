@@ -1,6 +1,18 @@
 ---
 controller:
-  ingressClass: ${nginx_ingress_class_name}
+  ingressClassByName: true
+  ingressClassResource:
+    name: ${nginx_ingress_class_name}
+    enabled: true
+    default: false
+    controllerValue: "k8s.io/ingress-nginx"
+  service:
+    external:
+      enabled:  ${nginx_ingress_lbl_external_enabled}
+    internal:
+      enabled: ${nginx_ingress_lbl_internal_enabled}
+      annotations:
+        networking.gke.io/load-balancer-type: "Internal"
   metrics:
     enabled: ${nginx_ingress_allow_prometheus}
     serviceMonitor:
