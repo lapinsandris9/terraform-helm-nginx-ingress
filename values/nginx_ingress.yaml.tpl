@@ -1,11 +1,12 @@
 ---
 controller:
+  ingressClassName: ${nginx_ingress_class_name}
   ingressClassByName: true
   ingressClassResource:
     name: ${nginx_ingress_class_name}
     enabled: true
     default: false
-    controllerValue: "k8s.io/ingress-nginx"
+    controllerValue: "k8s.io/${nginx_ingress_class_name}"
   service:
     enableHttp: "false"
     externalTrafficPolicy: "Local"
