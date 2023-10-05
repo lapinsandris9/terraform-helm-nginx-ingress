@@ -31,12 +31,6 @@ variable "nginx_ingress_hpa_enabled" {
   description = "enable hpa autoscaller"
 }
 
-variable "nginx_ingress_deploy_on_preemptible" {
-  default     = false
-  type        = bool
-  description = "Allow nginx-ingress deployed on GKE preemtible nodes"
-}
-
 variable "nginx_ingress_allow_prometheus" {
   default = false
 }
