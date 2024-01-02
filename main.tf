@@ -28,6 +28,7 @@ resource "helm_release" "nginx-ingress" {
         nginx_ingress_class_name           = local.nginx_ingress_class_name_substrate
         nginx_ingress_lbl_external_enabled = local.nginx_ingress_lbl_external_enabled
         gcp_internal_subnet_name           = var.gcp_internal_subnet_name
+        nginx_ingress_deploy_on            = var.nginx_ingress_deploy_on
       }
     )
   ]

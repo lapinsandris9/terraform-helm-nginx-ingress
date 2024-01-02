@@ -29,6 +29,9 @@ controller:
     maxReplicas: ${nginx_ingress_replica_count}
   replicaCount: ${nginx_ingress_replica_count}
   enableCustomResources: "false"
+  nodeSelector:
+    kubernetes.io/os: linux
+    cloud.google.com/gke-provisioning: "${nginx_ingress_deploy_on}"
   appprotect:
     enable: "false"
   stats:

@@ -61,3 +61,9 @@ variable "gcp_internal_subnet_name" {
   default     = null
   description = "vpc subnet name if nginx_ingress_lbl_internal_enabled='true'"
 }
+
+variable "nginx_ingress_deploy_on" {
+  default     = "standard"
+  type        = string
+  description = "Nodes selector for nginx_ingress in GKE"
+}
