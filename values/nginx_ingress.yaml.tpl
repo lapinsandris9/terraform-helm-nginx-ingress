@@ -11,7 +11,7 @@ controller:
     enableHttp: "false"
     externalTrafficPolicy: "Local"
     external:
-      enabled:  ${nginx_ingress_lbl_external_enabled}
+      enabled: ${nginx_ingress_lbl_external_enabled}
     internal:
       enabled: ${nginx_ingress_lbl_internal_enabled}
       annotations:
@@ -29,6 +29,8 @@ controller:
     maxReplicas: ${nginx_ingress_replica_count}
   replicaCount: ${nginx_ingress_replica_count}
   enableCustomResources: "false"
+  opentelemetry
+    enabled: "false"
   nodeSelector:
     kubernetes.io/os: linux
     cloud.google.com/gke-provisioning: "${nginx_ingress_deploy_on}"
