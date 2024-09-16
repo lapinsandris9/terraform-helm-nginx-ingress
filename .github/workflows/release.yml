@@ -1,0 +1,29 @@
+name: "Terraform Module Release"
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2s
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Validate Terraform
+      run: terraform validate
+
+    - name: Format check
+      run: terraform fmt --check
+
+    - name: Tag Release
+      if: github.event_name == 'push'
+      run: echo "Releasing version ${GITHUB_REF##*/}"
