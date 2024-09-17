@@ -2,7 +2,7 @@ name: Test out scheduled Gitub pipeline every minute
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   check-version:
