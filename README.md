@@ -9,8 +9,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.12.1 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.24.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.15.0 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.32.0 |
 
 ## Modules
 
@@ -31,7 +31,7 @@ No modules.
 | <a name="input_helm_nginx_force_update"></a> [helm\_nginx\_force\_update](#input\_helm\_nginx\_force\_update) | helm chart deploy with force option | `bool` | `false` | no |
 | <a name="input_helm_repos"></a> [helm\_repos](#input\_helm\_repos) | n/a | `map(string)` | <pre>{<br>  "ingress-nginx": "https://kubernetes.github.io/ingress-nginx"<br>}</pre> | no |
 | <a name="input_nginx_ingress_allow_prometheus"></a> [nginx\_ingress\_allow\_prometheus](#input\_nginx\_ingress\_allow\_prometheus) | n/a | `bool` | `false` | no |
-| <a name="input_nginx_ingress_chart_version"></a> [nginx\_ingress\_chart\_version](#input\_nginx\_ingress\_chart\_version) | n/a | `string` | `"4.7.1"` | no |
+| <a name="input_nginx_ingress_chart_version"></a> [nginx\_ingress\_chart\_version](#input\_nginx\_ingress\_chart\_version) | n/a | `string` | `"4.10.1"` | no |
 | <a name="input_nginx_ingress_class_name"></a> [nginx\_ingress\_class\_name](#input\_nginx\_ingress\_class\_name) | n/a | `string` | `null` | no |
 | <a name="input_nginx_ingress_deploy_on"></a> [nginx\_ingress\_deploy\_on](#input\_nginx\_ingress\_deploy\_on) | Nodes selector for nginx\_ingress in GKE | `string` | `"standard"` | no |
 | <a name="input_nginx_ingress_helm_release_name"></a> [nginx\_ingress\_helm\_release\_name](#input\_nginx\_ingress\_helm\_release\_name) | n/a | `string` | `"nginx-ingress"` | no |
