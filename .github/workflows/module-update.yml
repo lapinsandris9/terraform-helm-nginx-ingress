@@ -72,7 +72,7 @@ jobs:
     - name: Increment version
       id: increment_version
       run: |
-        IFS='.' read -r major minor patch <<< "${{ env.latest_tag:1 }}"
+        IFS='.' read -r major minor patch <<< "${{ env.latest_tag }}"
         new_patch=$((patch + 1))
         new_tag="v$major.$minor.$new_patch"
         echo "New version: $new_tag"
