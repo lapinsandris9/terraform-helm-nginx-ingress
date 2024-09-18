@@ -63,6 +63,7 @@ jobs:
           sed -i "s/$current_version/$latest_version/" variables.tf
         else
           echo "Already up-to-date"
+          exit 0 # Exit with success, stopping the workflow here
         fi
         cat variables.tf | grep -A 4 -B 4 nginx_ingress_chart_version
 
@@ -97,6 +98,7 @@ jobs:
 
     - name: Push changes and tags
       run: |
-        git push origin master --tags
+        git checkout cron-update
+        git push --tags
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
