@@ -48,8 +48,8 @@ jobs:
     - name: Update version in variables.tf if necessary
       id: compare_versions
       run: |
-        new_curr_ver=$(jq -r '.variables.nginx_ingress_chart_version.value' "${{ steps.plan.outputs.stdout }}")
-        echo "New way to get curr ver: $new_curr_ver"
+        # new_curr_ver=$(jq -r '.variables.nginx_ingress_chart_version.value' "${{ steps.plan.outputs.stdout }}")
+        # echo "New way to get curr ver: $new_curr_ver"
         terraform plan -out=tfplan
         terraform show -json tfplan > plan.json
         current_version=$(jq -r '.variables.nginx_ingress_chart_version.value' plan.json)
