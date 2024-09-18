@@ -6,9 +6,12 @@ name: Check and udpate Ingress-Nginx Helm chart version
 #     - cron: '*/10 * * * *'
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
     branches:
-      - cron-update
+      - master
 
 jobs:
   check-version:
@@ -93,6 +96,6 @@ jobs:
 
     - name: Push changes and tags
       run: |
-        git push origin main --tags
+        git push origin master --tags
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
