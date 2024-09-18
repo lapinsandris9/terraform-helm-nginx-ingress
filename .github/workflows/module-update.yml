@@ -83,7 +83,8 @@ jobs:
       run: |
         git config --local user.name "GitHub Actions"
         git config --local user.email "actions@github.com"
-        git add version.txt
+        git add .
+        git status
         git commit -m "Update module to nginx controller chart version - ${{ env.latest_version }}"
 
     - name: Tag the new version
