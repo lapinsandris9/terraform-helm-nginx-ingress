@@ -98,7 +98,6 @@ jobs:
 
     - name: Push changes and tags
       run: |
-        git checkout cron-update
         git push --tags
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
