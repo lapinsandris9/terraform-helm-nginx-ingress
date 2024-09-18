@@ -17,21 +17,43 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Format Terraform scripts
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
+    
+    - name: Initialize Terraform
+      id: init
+      run: terraform init
+    
+    - name: Validate Terraform scripts
+      id: validate
+      run: terraform validate -no-color
+    
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color
+      continue-on-error: true
+
     - name: Get latest Helm chart version from ArtifactHub
-      id: get_version
+      id: get_latest_version
       run: |
         latest_version=$(curl -s https://artifacthub.io/api/v1/packages/helm/ingress-nginx/ingress-nginx | jq -r '.version')
         echo "Latest ingress-nginx version: $latest_version"
-        # FIXME: something deprecated here
-        echo "::set-output name=latest_version::$latest_version"
+        echo "latest_version=$latest_version" >> $GITHUB_ENV
 
     - name: Update version in variables.tf if necessary
-      id: update_version
+      id: compare_versions
       run: |
         terraform plan -out=tfplan
         terrraform show -json tfplan > plan.json
         current_version=$(jq -r '.variables.nginx_ingress_chart_version.value' plan.json)
-        latest_version=${{ steps.get_version.outputs.latest_version }}
+        latest_version = ${{ env.latest_version }}
+        # latest_version=${{ steps.get_latest_version.outputs.latest_version }}
+        # echo "The latest version is ${{ env.latest_version }}"
         echo "Current version: $current_version"
         if [[ "$latest_version" != "$current_version" ]]; then
           echo "New version found, updating to $latest_version"
