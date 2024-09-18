@@ -1,0 +1,32 @@
+name: Test out scheduled Gitub pipeline every minute
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Get latest Helm chart version from ArtifactHub
+      id: get_version
+      run: |
+        latest_version=$(curl -s https://artifacthub.io/api/v1/packages/helm/ingress-nginx/ingress-nginx | jq -r '.version')
+        echo "Latest ingress-nginx version: $latest_version"
+        echo "::set-output name=latest_version::$latest_version"
+
+    - name: Update version in variables.tf if necessary
+      id: update_version
+      run: |
+        current_version=$(grep 'nginx_ingress_chart_version' variables.tf | sed 's/.*="\(.*\)"/\1/')
+        latest_version=${{ steps.get_version.outputs.latest_version }}
+        echo "Current version: $current_version"
+        if [[ "$latest_version" != "$current_version" ]]; then
+          echo "New version found, updating to $latest_version"
+          sed -i "s/$current_version/$latest_version/" variables.tf
+        else
+          echo "Already up-to-date"
+        fi
